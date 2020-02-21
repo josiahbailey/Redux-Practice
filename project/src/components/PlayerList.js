@@ -2,11 +2,15 @@ import React from 'react';
 
 import PlayerCard from './PlayerCard'
 
-const PlayerList = () => {
+const PlayerList = ({ players, isFetching, error }) => {
    return (
       <div className='card-container'>
-         Container
-         <PlayerCard />
+         {error ? <h2>ERROR</h2> : <></>}
+         {isFetching ? <h2>LOADING...</h2> :
+            players.map(player => (
+               <PlayerCard player={player} />
+            ))
+         }
       </div>
    );
 }

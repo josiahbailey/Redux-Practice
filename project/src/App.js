@@ -1,18 +1,34 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
+import { connect } from 'react-redux'
+import { getData } from './actions/actions'
 
 import PlayerList from './components/PlayerList'
 import PlayerForm from './components/PlayerForm'
 import './App.css';
 
 
-function App() {
+function App({ players, isFetching, error, getData }) {
+   useEffect(() => {
+      getData()
+   }, [])
    return (
       <div className='center'>
          <h1>Soccer Players</h1>
          <PlayerForm />
-         <PlayerList />
+         <PlayerList error={error}
+            isFetching={isFetching}
+            players={players} />
       </div>
    );
 }
 
-export default App;
+const mapStateToProps = state => {
+   return {
+      players: state.players,
+      isFetching: state.isFetching,
+      error: state.error
+   }
+}
+
+export default connect(mapStateToProps, { getData })(App);
