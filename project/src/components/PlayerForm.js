@@ -2,9 +2,12 @@ import React from 'react';
 
 const PlayerForm = () => {
    return (
-      <div className='form'>
-         Form
-      </div>
+      <form className='form'>
+         <input className='input' type='text' placeholder='Name' />
+         <input className='input' type='text' placeholder='Rank' />
+         <input className='input' type='text' placeholder='Nick Name' />
+         <button className='btn'>Add a player</button>
+      </form>
    );
 }
 

@@ -6,11 +6,17 @@ body {
    text-align: center;
 }
 
+h1,
+h2 {
+   color: white;
+}
+
 .App {
    text-align: center;
    background: url('./assests/soccer-field.jpg') no-repeat center center/cover;
    height: 100vh;
    backdrop-filter: blur(3px);
+   border-radius: 20px;
 }
 
 

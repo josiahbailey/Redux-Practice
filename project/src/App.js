@@ -13,22 +13,23 @@ function App({ players, isFetching, error, getData }) {
       getData()
    }, [])
    return (
-      <div className='center'>
+      <div className='App'>
          <h1>Soccer Players</h1>
          <PlayerForm />
-         <PlayerList error={error}
+         <PlayerList
+            error={error}
             isFetching={isFetching}
             players={players} />
       </div>
    );
 }
 
-const mapStateToProps = state => {
-   return {
+const mapStateToProps = state => (
+   {
       players: state.players,
       isFetching: state.isFetching,
       error: state.error
    }
-}
+)
 
 export default connect(mapStateToProps, { getData })(App);
