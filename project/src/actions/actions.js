@@ -1,0 +1,15 @@
+import axios from 'axios'
+
+export const FETCH_DATA = 'FETCH_DATA'
+export const FETCH_SUCCESS = 'FETCH_SUCCESS'
+export const FETCH_FAIL = 'FETCH_FAIL'
+
+export const getData = () => dispatch => {
+   dispatch({ type: FETCH_DATA })
+   axios.get(`http://localhost:3000/players`)
+      .then(res => {
+         console.log(res)
+         dispatch({ type: FETCH_SUCCESS, payload: res.data })
+      })
+}
+
