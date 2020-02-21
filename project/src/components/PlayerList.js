@@ -8,7 +8,7 @@ const PlayerList = ({ players, isFetching, error }) => {
          {error ? <h2>ERROR</h2> : <></>}
          {isFetching ? <h2>LOADING...</h2> :
             players.map(player => (
-               <PlayerCard player={player} />
+               <PlayerCard key={player.id} player={player} />
             ))
          }
       </div>

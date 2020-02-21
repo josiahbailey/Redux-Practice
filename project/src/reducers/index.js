@@ -1,4 +1,4 @@
-import { FETCH_DATA, FETCH_SUCCESS, FETCH_FAIL } from '../actions/actions'
+import { FETCH_DATA, FETCH_SUCCESS, FETCH_FAIL, POST_PLAYER, POST_FAIL, POST_SUCCESS } from '../actions/actions'
 
 const initalState = {
    players: [],
@@ -25,6 +25,24 @@ export const reducer = (state = initalState, action) => {
             ...state,
             error: action.payload,
             isFetching: false
+         }
+      case POST_PLAYER:
+         return {
+            ...state,
+            isFetching: true,
+         }
+      case POST_SUCCESS:
+         return {
+            ...state,
+            players: action.payload,
+            isFetching: false,
+            error: ''
+         }
+      case POST_FAIL:
+         return {
+            ...state,
+            isFetching: false,
+            error: action.payload
          }
       default:
          return state

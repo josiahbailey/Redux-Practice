@@ -1,21 +1,21 @@
 import React, { useEffect } from 'react';
 
 import { connect } from 'react-redux'
-import { getData } from './actions/actions'
+import { getData, addPlayer } from './actions/actions'
 
 import PlayerList from './components/PlayerList'
 import PlayerForm from './components/PlayerForm'
 import './App.css';
 
 
-function App({ players, isFetching, error, getData }) {
+function App({ players, isFetching, error, getData, addPlayer }) {
    useEffect(() => {
       getData()
    }, [])
    return (
       <div className='App'>
          <h1>Soccer Players</h1>
-         <PlayerForm />
+         <PlayerForm addPlayer={addPlayer} getData={getData} />
          <PlayerList
             error={error}
             isFetching={isFetching}
@@ -32,4 +32,4 @@ const mapStateToProps = state => (
    }
 )
 
-export default connect(mapStateToProps, { getData })(App);
+export default connect(mapStateToProps, { getData, addPlayer })(App);
